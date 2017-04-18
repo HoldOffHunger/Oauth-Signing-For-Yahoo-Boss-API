@@ -2,7 +2,9 @@
 	
 		// Class: Yahoo
 		// Function: Sign an Oauth Request Designed for Yahoo BOSS API
+		
 		// Yahoo BOSS: https://developer.yahoo.com/boss/
+		// OAUTH Signing Implemented: https://oauth1.wp-api.org/docs/basics/Signing.html
 		
 			// NOTE: YAHOO BOSS is deprecated!  You will not be able to query yahoo's services.
 			// This is presented as a demo of how to SIGN an Oauth Request.
@@ -30,12 +32,12 @@
 			$search_term = $args['searchterm'];
 			
 			$parameter_string = '';
-			$parameter_string .= 'oauth_consumer_key=' . $oauth_consumer_key;
-			$parameter_string .= '&oauth_nonce=' . $oauth_nonce;
-			$parameter_string .= '&oauth_signature_method=' . $oauth_signature_method;
-			$parameter_string .= '&oauth_timestamp=' . $oauth_timestamp;
-			$parameter_string .= '&oauth_version=' . $oauth_version;
-			$parameter_string .= '&q=' . $search_term;
+			$parameter_string .= 'oauth_consumer_key=' . urlencode($oauth_consumer_key);
+			$parameter_string .= '&oauth_nonce=' . urlencode($oauth_nonce);
+			$parameter_string .= '&oauth_signature_method=' . urlencode($oauth_signature_method);
+			$parameter_string .= '&oauth_timestamp=' . urlencode($oauth_timestamp);
+			$parameter_string .= '&oauth_version=' . urlencode($oauth_version);
+			$parameter_string .= '&q=' . urlencode($search_term);
 			
 			$yahoo_image_search_url = 'https://yboss.yahooapis.com/ysearch/images';		# ending '/' unnecessary
 			
